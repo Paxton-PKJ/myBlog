@@ -1,0 +1,121 @@
+baseURL: https://blog.paxton-cloud.top
+languageCode: zh
+title: PaxtonのBlog
+theme: PaperMod
+
+enableInlineShortcodes: true # 允许内联短码
+enableEmoji: true # 允许使用 Emoji 表情，建议 true
+enableRobotsTXT: true # 允许爬虫抓取到搜索引擎，建议 true
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+paginate: 15 # 每页显示的文章数
+
+params:
+  env: production
+  StartYear: 2024 # 底部开始年份
+  #默认主题
+  defaultTheme: auto
+  # 首页信息
+  homeInfoParams:
+    Title: "浅海拾贝"
+    Content: 某双非大学生的提桶跑路日记
+  # 社交链接 可选
+  socialIcons:
+    - name: "Github"
+      url: "https://github.com/paxton-pkj"
+  #归档设置
+  # fusejs模糊搜索设置
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+  DateFormat: "2006-01-02"
+  enableGitInfo: true
+  #分享按钮显示(国外媒体)
+  ShowShareButtons: false
+  #帖子阅读时间
+  ShowReadingTime: true
+  #代码块复制按钮
+  ShowCodeCopyButtons: true
+  #文章目录
+  showtoc: true
+  #默认开启目录
+  tocopen: true
+  #显示上下篇文章
+  ShowPostNavLinks: true
+  #显示面包屑导航
+  ShowBreadCrumbs: true
+  #显示字数统计
+  ShowWordCount: true
+  #显示文章更新时间
+  ShowLastMod: true
+  #查看量
+  VisitCount: true
+  #显示文章归档
+  ShowAllPagesInArchive: true
+
+#搜索
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
+#搜索引擎分析
+analytics:
+  google:
+    SiteVerificationTag: ""
+  bing:
+    SiteVerificationTag: ""
+#主页顶栏菜单
+menu:
+  main:
+    - identifier: posts
+      name: 文章
+      url: /posts/
+      weight: 5
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 10
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 15
+    - identifier: search
+      name: 搜索
+      url: /search/
+      weight: 20
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 25
+    - identifier: homepage
+      name: Homepage
+      url: https://paxton-cloud.top
+      weight: 30
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    lineNumbersInTable: false
+    style: monokai
+    # codeFences：代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
+    # guessSyntax：猜测语法，语言自动匹配
+    # hl_Lines：高亮的行号
+    # lineNoStart：行号从编号几开始
+    # lineNos：是否显示行号
+    # lineNumbersInTable：使用表来格式化行号和代码,而不是标签。这个属性一般设置为 true.
+    # noClasses：使用 class 标签，而不是内嵌的内联样式
