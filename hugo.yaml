@@ -20,7 +20,7 @@ params:
   env: production
   StartYear: 2024 # 底部开始年份
   #默认主题
-  defaultTheme: auto
+  defaultTheme: dark
   # 首页信息
   homeInfoParams:
     Title: "浅海拾贝"
