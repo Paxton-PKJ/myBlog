@@ -25,6 +25,12 @@
       {{- partial "translation_list.html" . -}}
       {{- partial "edit_post.html" . -}}
       {{- partial "post_canonical.html" . -}}
+      <!-- busuanzi -->
+      {{ if .Site.Params.busuanzi.enable -}}
+      <div class="meta-item">&nbsp·&nbsp
+        <span id="busuanzi_container_page_pv">PV:&nbsp<span id="busuanzi_value_page_pv"></span>
+      </div>
+      {{- end }}
     </div>
     {{- end }}
   </header>
