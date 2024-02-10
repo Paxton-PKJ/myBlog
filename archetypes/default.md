@@ -1,27 +1,20 @@
 ---
-title: "{{ replace .Name "-" " " | title }}" #标题
-date: {{ .Date }} #创建时间
-lastmod: {{ .Date }} #更新时间
-author: ["Paxton"] #作者
-categories: 
-- 分类1
-- 分类2
-tags: 
-- 标签1
-- 标签2
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+title: "{{ replace .Name "-" " " | title }}"
+date: {{ .Date }}
+lastmod: {{ .Date }}
+author: ["Paxton-PKJ"]
+summary: ""             # 简单描述，会展示在主页，可被搜索
+weight:                 # 输入1可以顶置文章
+draft: false            # 是否为草稿
+comments: true          # 是否开启评论
+hidemeta: false         # 是否隐藏文章的元信息，如发布日期、作者等
+searchHidden: false     # 该页面不能被搜索到
+showbreadcrumbs: true   # 顶部显示当前路径
+mermaid: true           # 是否开启mermaid
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: ""           # 封面图片
+    hidden: true        # 文章页面隐藏封面图片
+tags:
+- tag 1
+- tag 2
 ---
