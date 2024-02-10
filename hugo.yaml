@@ -14,6 +14,7 @@ buildExpired: false
 paginate: 15 # 每页显示的文章数
 
 params:
+  comments: true # 是否开启评论
   busuanzi: #busuanzi访问量统计
     enable: true
   env: production
