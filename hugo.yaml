@@ -24,7 +24,7 @@ params:
   # 首页信息
   homeInfoParams:
     Title: "浅海拾贝"
-    Content: 某双非大学生的提桶跑路日记
+    Content: <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p>
   # 社交链接 可选
   socialIcons:
     - name: "Github"
