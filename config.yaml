@@ -1,4 +1,4 @@
-baseurl: blog.paxton-cloud.top
+baseurl: /
 languageCode: zh-CN
 theme: hugo-theme-stack-3.21.0
 paginate: 10
