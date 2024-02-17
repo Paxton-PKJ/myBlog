@@ -64,7 +64,7 @@ params:
             
         # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
-            serverURL: http://waline.paxton-cloud.top/api
+            serverURL: https://waline.paxton-cloud.top/api
             lang: 
             visitor: false
             avatar: true
