@@ -4,4 +4,26 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "kzyezopl69");
+
+    var hitokototxt = "";
+    var hitokotourl = "";
+    fetch('https://v1.hitokoto.cn/?c=i')
+        .then(response => response.json())
+        .then(data => {
+            const hitokoto = document.querySelector('#hitokoto_text')
+            hitokototxt = data.hitokoto
+            hitokotourl = `https://hitokoto.cn/?uuid=${data.uuid}`
+        })
+        .catch(console.error)
+
+    setTimeout(function () {
+        var welcomeText = document.getElementById('welcome-text');
+        welcomeText.classList.add('fade-out'); // 添加淡出动画
+        setTimeout(function () {
+            welcomeText.href = hitokotourl
+            welcomeText.innerHTML = hitokototxt
+            welcomeText.classList.remove('fade-out'); // 移除淡出动画
+            welcomeText.classList.add('fade-in'); // 添加淡入动画
+        }, 1000); // 等待 1 秒钟
+    }, 3000); // 等待 3 秒钟
 </script>
