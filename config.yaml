@@ -1,0 +1,155 @@
+baseurl: blog.paxton-cloud.top
+languageCode: zh-CN
+theme: hugo-theme-stack-3.21.0
+paginate: 10
+title: PaxtonのBlog
+
+# Change it to your Disqus shortname before using
+# disqusShortname: 
+
+# GA Tracking ID
+# googleAnalytics:
+
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk
+DefaultContentLanguage: zh-cn
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: true
+
+permalinks:
+    post: /p/:slug/
+    page: /:slug/
+    
+# whether to use emoji code
+enableEmoji: true
+
+params:
+    mainSections:
+        - post
+    featuredImageField: image
+    rssFullContent: true
+    favicon: /img/favicon.png
+
+    footer:
+        since: 2024
+        customText:
+
+    dateFormat:
+        published: 2006-01-02
+        lastUpdated: 2006-01-02
+
+    sidebar:
+        emoji: 😤
+        subtitle: 书山寻径
+        avatar:
+            enabled: true
+            local: true
+            src: img/avatar.jpg
+
+    article:
+        math: true
+        toc: true
+        readingTime: true
+        license:
+            enabled: true
+            default: Licensed under CC BY-NC-SA 4.0
+        edit:
+            enabled: true
+
+    comments:
+        enabled: true
+        provider: waline
+            
+        # Waline client configuration see: https://waline.js.org/en/reference/client.html
+        waline:
+            serverURL: http://waline.paxton-cloud.top
+            lang: zh-CN
+            visitor: false
+            avatar: true
+            emoji:
+                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
+            requiredMeta:
+                - nick
+                - mail
+            placeholder:
+            locale:
+                admin: Admin
+
+    widgets:
+        homepage:
+            - type: archives
+              params:
+                  limit: 3
+            - type: categories
+              params:
+                  limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 10
+        page:
+            - type: toc
+           
+        archives:
+            limit: 10000
+
+        tagCloud:
+            limit: 10000
+            
+        categoriesCloud:
+            limit: 10000
+
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site:
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: light
+
+    imageProcessing:
+        cover:
+            enabled: false
+        content:
+            enabled: false
+
+### Custom menu
+### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+
+related:
+    includeNewer: true
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
+
+markup:
+    goldmark:
+        renderer:
+            ## Set to true if you have HTML content inside Markdown
+            unsafe: true
+    tableOfContents:
+        endLevel: 4
+        ordered: true
+        startLevel: 2
+    highlight:
+        noClasses: false
