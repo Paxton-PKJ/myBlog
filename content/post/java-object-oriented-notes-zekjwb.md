@@ -324,6 +324,308 @@ class Student implements Person, Hello { // 实现了两个interface
 }
 ```
 
-接口可以继承，继承和类的继承一致
+<span style="font-weight: bold;" data-type="strong">接口和类的相似之处:</span>
+
+|方面|描述|
+| ------------------| ----------------------------------------|
+|多个方法|接口和类都可以包含多个方法|
+|文件扩展名|接口文件以`.java`​结尾，与类文件相同|
+|字节码文件扩展名|接口的字节码文件以`.class`​结尾，与类相同|
+|目录结构|字节码文件必须在与包名称相匹配的目录中|
+
+<span style="font-weight: bold;" data-type="strong">接口和类的不同之处:</span>
+
+|方面|接口|类|
+| ----------| --------------------------------------------------| ------------------------------|
+|实例化|不能|可以|
+|构造方法|无|有|
+|方法类型|所有方法都是抽象的，从 Java 8 开始可以有默认方法|抽象、具体、静态、final 方法|
+|成员变量|静态、final 变量|任何类型的成员变量|
+|继承|被类实现，支持多继承|被子类继承，支持单继承|
+
+<span style="font-weight: bold;" data-type="strong">接口的特点:</span>
+
+|方面|描述|
+| ----------| ----------------------------------------|
+|方法声明|方法在接口中隐式为 public abstract|
+|变量声明|变量在接口中隐式为 public static final|
+|方法实现|方法不能在接口中实现|
+|多重继承|支持多重继承，一个类可以实现多个接口|
+
+<span style="font-weight: bold;" data-type="strong">抽象类和接口之间的不同之处:</span>
+
+|方面|抽象类|接口|
+| ------------------| ------------------------------| -----------------------------------|
+|方法实现|可以有具体方法（带有方法体）|方法都是隐式抽象的，不能有方法体|
+|成员变量|可以有任何类型的成员变量|变量是隐式 public static final 的|
+|静态方法和代码块|可以包含静态方法和静态代码块|不能包含静态方法或静态代码块|
+|继承|支持单继承|支持多继承|
+|实现|一个类只能继承一个抽象类|一个类可以实现多个接口|
+|其他|抽象类可以继承接口||
+
+### 标记接口
+
+标记接口是<u>没有任何方法和属性的接口</u>，仅表明它的类属于一个特定的类型,供其他代码来测试允许做一些事情
+
+~~简而言之就是打标记~~
+
+例如：java.awt.event 包中的 MouseListener 接口继承的 java.util.EventListener 接口定义如下：
+
+```java
+package java.util;
+public interface EventListener
+{}
+```
+
+标记接口主要用于以下两种目的：
+
+* <span style="font-weight: bold;" data-type="strong">建立一个公共的父接口：</span>
+
+  正如EventListener接口，这是由几十个其他接口扩展的Java API，你可以使用一个标记接口来建立一组接口的父接口。
+
+  例如：当一个接口继承了EventListener接口，Java虚拟机(JVM)就知道该接口将要被用于一个事件的代理方案。
+* <span style="font-weight: bold;" data-type="strong">向一个类添加数据类型：</span>
+
+  这种情况是标记接口最初的目的，实现标记接口的类不需要定义任何接口方法(因为标记接口根本就没有方法)，但是该类通过多态性变成一个接口类型。
+
+## 枚举类
+
+Java 枚举是一个特殊的类，<u>一般表示一组常量</u>，比如一年的 4 个季节，一年的 12 个月份，一个星期的 7 天，方向有东南西北等
+
+Java 枚举类使用 `enum`​ 关键字来定义，各个常量使用逗号 `,`​ 来分割
+
+```java
+enum Color 
+{ 
+    RED, GREEN, BLUE; 
+} 
+```
+
+可以使用 for 语句来<span style="font-weight: bold;" data-type="strong">迭代枚举元素</span>：
+
+```java
+enum Color
+{
+    RED, GREEN, BLUE;
+}
+public class MyClass {
+  public static void main(String[] args) {
+    for (Color myVar : Color.values()) {
+      System.out.println(myVar);
+    }
+  }
+}
+```
+
+<span style="font-weight: bold;" data-type="strong">switch中使用</span>
+
+```java
+enum Color
+{
+    RED, GREEN, BLUE;
+}
+public class MyClass {
+  public static void main(String[] args) {
+    Color myVar = Color.BLUE;
+
+    switch(myVar) {
+      case RED:
+        System.out.println("红色");
+        break;
+      case GREEN:
+         System.out.println("绿色");
+        break;
+      case BLUE:
+        System.out.println("蓝色");
+        break;
+    }
+  }
+}
+```
+
+<span style="font-weight: bold;" data-type="strong">三个内置方法</span>
+
+1. ​`values()`​：返回一个包含枚举类中所有值的数组。数组中的值的顺序与它们在枚举类中定义的顺序相同
+
+    ```java
+    Day[] days = Day.values();
+    for (Day day : days) {
+        System.out.println(day);
+    }
+    ```
+2. ​`ordinal()`​：返回枚举值在枚举类中的位置，位置从0开始计数
+
+    ```java
+    Day day = Day.MONDAY;
+    System.out.println(day.ordinal());  // 输出 "0"
+    ```
+3. ​`valueOf()`​：接受一个字符串参数，返回与该字符串对应的枚举值。如果枚举类中没有与该字符串对应的值，这个方法会抛出`IllegalArgumentException`​
+
+    ```java
+    Day day = Day.valueOf("MONDAY");
+    System.out.println(day);  // 输出 "MONDAY"
+    ```
+
+### 枚举类成员
+
+可以有变量、方法、构造函数，构造函数只能使用private，外部无法调用
+
+枚举可以包含抽象方法，抽象方法实现，需要枚举类中的每个对象都对其进行实现
+
+```java
+enum Color{
+    RED{
+        public String getColor(){//枚举对象实现抽象方法
+            return "红色";
+        }
+    },
+    GREEN{
+        public String getColor(){//枚举对象实现抽象方法
+            return "绿色";
+        }
+    },
+    BLUE{
+        public String getColor(){//枚举对象实现抽象方法
+            return "蓝色";
+        }
+    };
+    public abstract String getColor();//定义抽象方法
+}
+
+public class Test{
+    public static void main(String[] args) {
+        for (Color c:Color.values()){
+            System.out.print(c.getColor() + "、");
+        }
+    }
+}
+```
+
+## 包
+
+包的作用
+
+1. 把功能相似或相关的类或接口组织在同一个包中，方便类的查找和使用
+2. 如同文件夹一样，包也采用了<span style="font-weight: bold;" data-type="strong">树形目录的存储方式</span>。<u>同一个包中的类名字是不同的，不同的包中的类的名字是可以相同的</u>，当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。因此，包可以避免名字冲突
+3. 包也限定了<u>访问权限</u>，拥有包访问权限的类才能访问某个包中的类
+
+包语句的语法格式为：
+
+```java
+package net.java.util;
+public class Something{
+   ...
+}
+```
+
+则以上类的路径为`net/java/util/Something.java`​
+
+### 创建包
+
+创建包的时候，需要为这个包取一个合适的名字
+
+如果其他的一个源文件包含了这个包提供的类、接口、枚举或者注释类型的时候，都<u>必须将这个包的声明放在这个源文件的开头</u>
+
+包声明应该在源文件的第一行，<u>每个源文件只能有一个包声明</u>，这个文件中的每个类型都应用于它
+
+如果一个源文件中没有使用包声明，那么其中的类，函数，枚举，注释等将被放在一个无名的包（unnamed package）中
+
+---
+
+假设有一个`animals`​包，存在一个`Animal`​接口和对应的实现
+
+```java
+/* 文件名: Animal.java */
+package animals;
+
+interface Animal {
+   public void eat();
+   public void travel();
+}
+```
+
+```java
+package animals;
+
+/* 文件名 : MammalInt.java */
+public class MammalInt implements Animal{
+   public void eat(){
+      System.out.println("Mammal eats");
+   }
+   public void travel(){
+      System.out.println("Mammal travels");
+   } 
+   public int noOfLegs(){
+      return 0;
+   }
+   public static void main(String args[]){
+      MammalInt m = new MammalInt();
+      m.eat();
+      m.travel();
+   }
+}
+```
+
+### import关键字
+
+引入一个类有四种形式
+
+1. 假设有一个`payroll`​包，当前包含`Employee`​类
+
+    此时在`payroll`​包中的其他类调用它的时候不需要前缀
+
+    ```java
+    package payroll;
+     
+    public class Boss
+    {
+       public void payEmployee(Employee e)
+       {
+          e.mailCheck();
+       }
+    }
+    ```
+2. ​`Boss`​类不在`payroll`​包中
+
+    1. 使用类全名描述
+
+        ```java
+        payroll.Employee
+        ```
+    2. 使用import引入所有类
+
+        ```java
+        import payroll.*;
+        ```
+    3. 使用import引入单个类
+
+        ```java
+        import payroll.Employee;
+        ```
+
+可以包含任意数量的import声名，import 声明必须在包声明之后，类声明之前。
+
+```java
+// 第一行非注释行是 package 语句
+package com.example;
+ 
+// import 语句引入其他包中的类
+import java.util.ArrayList;
+import java.util.List;
+ 
+// 类的定义
+public class MyClass {
+    // 类的成员和方法
+}
+```
+
+### 目录结构
+
+包名必须与相应的字节码所在的目录结构相吻合
+
+正确的类名和路径将会是如下样子：
+
+* 类名 -> vehicle.Car
+* 路径名 -> vehicle\Car.java
 
 ‍
