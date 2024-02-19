@@ -11,6 +11,7 @@ categories:
   - 提桶跑路笔记
 keywords: java
 isCJKLanguage: true
+image: https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image.png
 ---
 
 
