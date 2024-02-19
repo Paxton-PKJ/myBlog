@@ -36,13 +36,26 @@
                 </time>
             </div>
         {{ end }}
-
+        {{- if ne .Lastmod .Date -}}
+        <div>
+            {{ partial "helper/icon" "edit" }}
+            <time class="article-lastmod">
+                {{- .Lastmod.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+            </time>
+        </div>
+        {{ end }}
         {{ if $showReadingTime }}
             <div>
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
                     {{ T "article.readingTime" .ReadingTime }}
                 </time>
+            </div>
+            <div>
+                {{ partial "helper/icon" "file-description" }} 
+                  <time class="article-words">
+                    字数: {{ .WordCount }}
+                  </time>
             </div>
         {{ end }}
     </footer>
