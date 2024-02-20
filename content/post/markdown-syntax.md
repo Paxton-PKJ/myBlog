@@ -1,6 +1,6 @@
 +++
 title = "博客文章测试"
-date = "2024-02-17"
+date = "2024-02-01"
 description = "markdown格式，数学公式，emoji测试"
 tags = []
 categories = [
