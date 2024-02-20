@@ -18,6 +18,8 @@ image: https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image.png
 
 
 
+https://www.liaoxuefeng.com/wiki/1252599548343744
+
 ## java继承
 
 使用`extends`​关键字实现继承，如以下代码11行
@@ -628,5 +630,104 @@ public class MyClass {
 
 * 类名 -> vehicle.Car
 * 路径名 -> vehicle\Car.java
+
+## 内部类
+
+内部类是指被定义在另一个类内部的类。内部类分为以下几种
+
+### Inner Class
+
+```java
+class Outer {
+    class Inner {
+        // 定义了一个Inner Class
+    }
+}
+```
+
+​`Inner Class`​与普通类有个最大的不同，就是`Inner Class`​的实例不能单独存在，必须依附于一个`Outer Class`​的实例
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Outer outer = new Outer("Nested"); // 实例化一个Outer
+        Outer.Inner inner = outer.new Inner(); // 实例化一个Inner
+        inner.hello();
+    }
+}
+
+class Outer {
+    private String name;
+    Outer(String name) {
+        this.name = name;
+    }
+    class Inner {
+        void hello() {
+            System.out.println("Hello, " + Outer.this.name);
+        }
+    }
+}
+```
+
+​`Inner Class`​隐式持有一个`Outer Class`​实例，即在内部类中`this`​指向内部类自身，同时还存在一个`Outer.this`​指向外部类
+
+​`Inner Class`​的作用域在`Outer Class`​内部，内部类能够通过`Outer.this`​访问和修改外部类中的`private`​字段
+
+### Anonymous Class
+
+匿名类`Anonymous Class`​不需要在方法内部明确定义Class，通常用于一次性使用的场景
+
+匿名类可以是类的子类，也可以是接口的实现
+
+```java
+new superclass_or_interface() {
+    // 类体
+}
+```
+
+这里的`superclass_or_interface`​想要<u>继承的类或者实现的接口</u>，类体中<u>可以包含字段、方法</u>等
+
+例如下列代码创建了实现`Runnable`​接口的匿名类
+
+```java
+Runnable r = new Runnable() {
+	@Override
+    public void run() {
+    	System.out.println("Hello, " + Outer.this.name);
+    }
+};
+```
+
+匿名类也可以继承自普通类
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, String> map1 = new HashMap<>();
+        HashMap<String, String> map2 = new HashMap<>() {}; // 匿名类!
+        HashMap<String, String> map3 = new HashMap<>() {
+            {
+                put("A", "1");
+                put("B", "2");
+            }
+        };
+        System.out.println(map3.get("A"));
+    }
+}
+```
+
+1. map1 是一个普通的 HashMap 实例，没有使用匿名类。
+2. map2 是一个 HashMap 的匿名子类的实例。这里的 {} 定义了一个匿名子类，但是这个子类没有添加或覆盖任何方法，所以它的行为和普通的 HashMap 完全一样
+3. map3 也是一个 HashMap 的匿名子类的实例，但是这个子类在定义时使用了一个实例初始化块（也叫初始化器）。初始化器中的代码在创建类的实例时执行，所以 map3 在创建时就已经包含了两个键值对："A"-"1" 和 "B"-"2"
+
+匿名类也是一种内部类，也可以访问`Outer Class`​的`private`​字段和方法
+
+### Static Nested Class
+
+和`Inner Class`​类似，但是使用`static`​修饰，称为静态内部类`Static Nested Class`​
+
+> 用`static`​修饰的内部类和Inner Class有很大的不同，它不再依附于`Outer`​的实例，而是一个完全独立的类，因此无法引用`Outer.this`​
+
+但它可以访问`Outer`​​的`private`​​静态字段和静态方法。如果把`StaticNested`​​移到`Outer`​​之外，就失去了访问`private`​​的权限。
 
 ‍
