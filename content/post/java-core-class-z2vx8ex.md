@@ -1,9 +1,9 @@
 ---
-title: java核心类
+title: java常用核心类笔记
 slug: java-core-class-z2vx8ex
 url: /post/java-core-class-z2vx8ex.html
 date: '2024-02-20 11:13:53'
-lastmod: '2024-02-20 16:29:07'
+lastmod: '2024-02-22 12:46:48'
 toc: true
 isCJKLanguage: true
 image: https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/javaCoreClass.png
