@@ -1,5 +1,5 @@
 ---
-title: msys2与pyenv冲突的解决
+title: 解决msys2与pyenv冲突
 slug: solution-msys2-conflict-with-pyenv-tl51f
 url: /post/solution-msys2-conflict-with-pyenv-tl51f.html
 date: '2024-04-15 20:13:42'
@@ -19,7 +19,7 @@ keywords: msys2,pyenv,python,gcc,环境管理
 
 
 
-# 解决msys2与pyenv冲突
+
 
 ## 问题发现
 
