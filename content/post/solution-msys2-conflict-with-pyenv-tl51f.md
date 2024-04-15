@@ -2,8 +2,8 @@
 title: 解决msys2与pyenv冲突
 slug: solution-msys2-conflict-with-pyenv-tl51f
 url: /post/solution-msys2-conflict-with-pyenv-tl51f.html
-date: '2024-04-15 20:13:42'
-lastmod: '2024-04-15 20:33:53'
+date: '2024-04-15'
+lastmod: '2024-04-15'
 toc: true
 isCJKLanguage: true
 tags:
