@@ -1,13 +1,3 @@
-+++
-title = "博客文章html发布测试"
-date = "2024-02-01"
-description = "markdown格式，数学公式，emoji测试"
-tags = []
-categories = [
-    "Test"
-]
-+++
-
 <p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
 <h2>Headings</h2>
 <p>The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
@@ -115,21 +105,6 @@ categories = [
 <p>Test</p>
 </body>
 </html>
-<h4>Code block with Hugo's internal highlight shortcode</h4>
-<p>{{&lt; highlight html &gt;}}<br />
-&lt;!doctype html&gt;</p>
-<div>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
-{{< /highlight >}}
-</div>
 <h4>Diff code block</h4>
 <pre><code class="language-diff">[dependencies.bevy]
 git = &quot;https://github.com/bevyengine/bevy&quot;
@@ -166,14 +141,6 @@ rev = &quot;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&quot;
 </ul>
 </li>
 </ul>
-<h2>Other Elements — abbr, sub, sup, kbd, mark</h2>
-<p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
-<p>H<sub>2</sub>O</p>
-<p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
-<p>Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.</p>
-<p>Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.</p>
-<p><strong>Equal sign highlight test</strong></p>
-<p><mark>mark tag highlighting test</mark></p>
 <h2>Hyperlinked image</h2>
 <p><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_272x92dp.png" alt="Google" /><a href="https://google.com">https://google.com</a></p>
 <h2>emoji</h2>
@@ -188,30 +155,6 @@ rev = &quot;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&quot;
 <br>
 </div>
 <p>The <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
-<hr />
-<p><strong>N.B.</strong>   The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
-<p>{{&lt; highlight html &gt;}}<br />
-.emoji {<br />
-font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;<br />
-}<br />
-{{&lt; /highlight &gt;}}</p>
-<p>{{&lt; css.inline &gt;}}</p>
-<div>
-<style>
-.emojify {
-	font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
-	font-size: 2rem;
-	vertical-align: middle;
-}
-@media screen and (max-width:650px) {
-  .nowrap {
-    display: block;
-    margin: 25px 0;
-  }
-}
-</style>
-</div>
-<p>{{&lt; /css.inline &gt;}}</p>
 <h2>math</h2>
 <p>Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.</p>
 <div>
@@ -232,18 +175,6 @@ font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol,
 <li>To enable KaTex on a per page basis include the parameter <code>math: true</code> in content files</li>
 </ul>
 <p><strong>Note:</strong>   Use the online reference of <a href="https://katex.org/docs/supported.html">Supported TeX Functions</a></p>
-<p>{{&lt; math.inline &gt;}}<br />
-{{ if or .Page.Params.math .Site.Params.math }}</p>
-<div>
-<!-- KaTeX -->
-</div>
-<div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-{{ end }}
-{{</ math.inline >}}
-</div>
 <h3>Examples</h3>
 <p>Inline math: $\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$</p>
 <p>Block math:</p>
