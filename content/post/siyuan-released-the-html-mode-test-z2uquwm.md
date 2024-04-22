@@ -1,12 +1,12 @@
-+++
-title = "博客文章html发布测试"
-date = "2024-02-01"
-description = "markdown格式，数学公式，emoji测试"
-tags = []
-categories = [
-    "Test"
-]
-+++
+---
+title: 思源发布html模式测试
+slug: siyuan-released-the-html-mode-test-z2uquwm
+url: /post/siyuan-released-the-html-mode-test-z2uquwm.html
+date: '2024-04-21 19:06:26'
+lastmod: '2024-04-21 19:12:20'
+toc: true
+isCJKLanguage: true
+---
 
 <p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
 <h2>Headings</h2>
