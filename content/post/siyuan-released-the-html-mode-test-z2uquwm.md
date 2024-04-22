@@ -1,3 +1,13 @@
++++
+title = "博客文章html发布测试"
+date = "2024-02-01"
+description = "markdown格式，数学公式，emoji测试"
+tags = []
+categories = [
+    "Test"
+]
++++
+
 <p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
 <h2>Headings</h2>
 <p>The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
