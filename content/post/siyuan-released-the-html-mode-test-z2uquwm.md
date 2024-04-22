@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: 思源发布html模式测试
 slug: siyuan-released-the-html-mode-test-z2uquwm
@@ -9,8 +8,6 @@ toc: true
 isCJKLanguage: true
 ---
 
-=======
->>>>>>> 3b80824597f8c474dc4e68898ae733f08bdc2fac
 <p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
 <h2>Headings</h2>
 <p>The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
