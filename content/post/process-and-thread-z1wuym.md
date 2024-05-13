@@ -1,5 +1,5 @@
 ---
-title: 进程与线程
+title: 408操作系统—2.进程与线程
 slug: process-and-thread-z1wuym
 url: /post/process-and-thread-z1wuym.html
 date: '2024-04-23 11:57:14+08:00'
