@@ -24,11 +24,11 @@
 {{ end }}
 
 {{ define "main" }}
-    {{ partial "article/article.html" . }}
-
     {{ if .Params.links }}
         {{ partial "article/components/links" . }}
     {{ end }}
+
+    {{ partial "article/article.html" . }}
 
     {{ partial "article/components/related-content" . }}
      

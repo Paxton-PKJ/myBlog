@@ -130,6 +130,14 @@ params:
 ### Custom menu
 ### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+menu:
+    main: 
+        - identifier: links
+          name: 友链
+          url: /links
+          weight: -75
+          params:
+              icon: link
 
 related:
     includeNewer: true
