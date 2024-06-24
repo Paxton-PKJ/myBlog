@@ -1,3 +1,19 @@
+---
+title: CMCC Rax3000m nand刷机记录
+slug: cmcc-rax3000m-nand-flashing-record-zsnjap
+url: /post/cmcc-rax3000m-nand-flashing-record-zsnjap.html
+date: '2024-06-24 16:42:08+08:00'
+lastmod: '2024-06-24 16:45:59+08:00'
+toc: true
+isCJKLanguage: true
+tags:
+  - linux
+  - openwrt
+catagories:
+  - 折腾
+keywords: linux,openwrt
+image: https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202406241640898.png
+---
 
 
 
