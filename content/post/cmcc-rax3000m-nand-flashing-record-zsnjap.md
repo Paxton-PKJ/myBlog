@@ -3,7 +3,7 @@ title: CMCC Rax3000m nand刷机记录
 slug: cmcc-rax3000m-nand-flashing-record-zsnjap
 url: /post/cmcc-rax3000m-nand-flashing-record-zsnjap.html
 date: '2024-06-24 16:42:08+08:00'
-lastmod: '2024-06-24 16:45:59+08:00'
+lastmod: '2024-07-02 11:12:43+08:00'
 toc: true
 isCJKLanguage: true
 tags:
@@ -22,6 +22,8 @@ image: https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202406241640898.png
 > **非算力版，emmc芯片不可使用本记录！**
 
 拼多多128购入20240326版本，参考1124版本刷机教程成功
+
+[ram3000m固件、uboot、配置文件下载](https://0dkmy-my.sharepoint.com/:f:/g/personal/paxton_pkj_0dkmy_onmicrosoft_com/EtQijw4lZJhMnL6NwrLw6dwBveszhpd8eDQy02vdzzTqng?e=pWizu2)
 
 ## 开启ssh
 
