@@ -3,7 +3,7 @@ title: 408计组——4.指令系统
 slug: 408-planning-4-the-instruction-system-23mvyh
 url: /post/408-planning-4-the-instruction-system-23mvyh.html
 date: '2024-09-10 13:39:42+08:00'
-lastmod: '2024-09-10 21:50:57+08:00'
+lastmod: '2024-09-11 22:23:26+08:00'
 toc: true
 tags:
   - '408'
@@ -465,12 +465,205 @@ mov byte ptr [var], 5
 
 #### 控制流指令
 
+一条指令被执行时，IP指针自动指向相邻的下一条指令
+
+可以使用<u>控制流指令通过</u>​<u>**标签**</u>​<u>指示跳转位置</u>
+
+<u>任何指令前都可以加入标签</u>
+
+```x86asm
+mov esi, [ebp+8]
+begin: xor ecx, ecx
+mov eax, [esi]
+```
+
+1. **jmp**
+
+    控制IP跳转到指示主存地址
+
+    ```x86asm
+    jmp 128    ;<地址>可以用常数给出
+    jmp eax    ;<地址>可以来自于寄存器
+    jmp [999]  ;<地址>可以来自于主存
+    jmp NEXT   ;<地址>可以用“标签”锚定
+    ```
+2. **j**​***condition***
+
+    条件转移指令，通常需要与`cmp`​指令一起使用
+
+    ```x86asm
+    je <label>   ;(jump when equal)
+    jz <label>   ;(jump when last result was zero)
+    jne <label>  ;(jump when not equal)
+    jg <label>   ;(jump when greater than)
+    jge <1abel>  ;(jump when greater than or equal to)
+    jl <1abel>   ;(jump when less than)
+    jle <label>  ;(jump when less than or equal to)
+    ;例如
+    cmp eax,ebx  ;比较寄存器eax和ebx里的值
+    jg NEXT      ;若eax>ebx,则跳转到NEXT:
+    ```
+
+    条件转移指令判断psw程序状态字寄存器中数值，因此需要先进行cmp
+3. **cmp/test**
+
+    cmp指令比较两个操作数大小，使用补码减法，只保存结果的标志位
+
+    test指令对两个操作数进行与运算，只保存结果标志位
+
+    ```x86asm
+    cmp <reg>,<reg>
+    cmp <reg>,<mem>
+    cmp <mem>,<reg>
+    cmp <reg>,<con>
+    ```
+
+    通常与2.配合使用
+4. **call/ret**
+
+    实现子程序调用和返回
+
+    ```x86asm
+    call <1abel>
+    ret
+    ```
+
+    调用call指令会进行两步操作
+
+    1. 将IP旧值压栈保存（`push IP`​）
+    2. 将IP新值设置为被调用函数的第一条指令（`jmp <labal>`​）
+
+    调用ret指令：在栈帧顶找到IP旧值，出栈并恢复IP寄存器
+
 ### 选择语句
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image-20240911151356-h0wlnct.png)​
+
+cmp配合jxxx指令加上mov跳转，可以实现选择语句的分支结构
 
 ### 循环语句
 
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409111526445.png)​
+
+* **循环构成**
+
+  1. 循环初始化
+  2. 是否进入循环的判断
+  3. 循环体
+  4. 循环末尾判断是否继续下一次循环
+
+可以使用loop指令代替末尾的下次循环判断，用于定次的循环
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409111524228.png)​
+
 ### 过程调用
 
+**函数栈帧（Stack Frame）：** 保存函数大括号内定义的**局部变量**、保存**函数调用相关的信息**
+
+当前正在执行的函数位于栈顶，函数调用栈为一片内存区域
+
+栈底位于高位，栈顶位于低位
+
+在汇编语言中，函数名通常作为该函数在汇编语言中的**标记**，标注函数头
+
+#### 访问栈帧数据
+
+‍
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409111610719.png)​
+
+​`EBP`​指向当前栈帧**底部**​`ESP`​指向**顶部**
+
+x86 系统中，默认以4字节为栈的操作单位
+
+* 方法1
+
+  * 移动`ESP`​指向压入后的栈帧顶部即-4，再往当前栈帧范围压入一个数值
+  * 弹出则相反+4
+
+```x86asm
+push eax        ;将寄存器eax的值压栈
+push 985        ;将立即数985压栈
+push [ebp+8]    ;将主存地址[ebp+8]里的数据压栈
+pop eax         ;栈顶元素出栈，写入寄存器eax
+pop [ebp+8]     ;栈顶元素出栈，写入主存地址[ebp+8]，即修改栈帧数据
+```
+
+* 方法2
+
+  * 使用mov指令结合`EBP`​和`ESP`​指针读取栈帧数据
+  * 使用add/sub指令修改`ESP`​指向位置，修改4字节的倍数
+
+```x86asm
+sub esp,12          ;栈顶指针-12
+mov [esp+8],eax     ;将eax的值复制到主存[esp+8]
+mov [esp+4],958     ;将985复制到主存[esp+4]
+mov eax, [ebp+8]    ;将主存[ebp+8]的值复制到eax
+mov [esp],eax       ;将eax的值复制到主存[esp]
+add esp,8           ;栈顶指针+8
+```
+
+#### 栈帧切换
+
+调用函数时，使用call指令调用的函数，同时需要切换栈帧
+
+被调用函数的开头会默认包含以下操作
+
+```x86asm
+push ebp		;保存上一层函数的栈帧基址（ebp旧值）,esp自动+4
+mov ebp,esp		;设置当前函数的栈帧基址（ebp新值）,ebp指向esp所指位置
+				;此时已进入新栈帧，以上两条指令可用enter代替
+```
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112126942.png)​
+
+每个栈帧底部用于保存上一层栈帧的基址
+
+---
+
+函数返回时，使用leave指令和ret指令
+
+```x86asm
+mov esp,ebp		;让esp指向当前栈帧的底部
+pop ebp			;将esp所指元素出栈，写入寄存器ebp
+				;可用leave代替以上指令
+```
+
+ret指令，从函数的栈帧顶部找到IP旧值，将其出栈并恢复IP寄存器
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112144911.png)​
+
+函数框架图如下
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112152066.png)​
+
+#### 栈帧包含内容
+
+1. 编译器设置栈帧大小为16字节的倍数，栈帧内部可能存在未使用区域
+2. 局部变量集中存储于栈帧底部
+3. 调用参数集中存储于栈帧顶部
+4. 栈帧最底部一定是ebp旧值
+5. 栈帧最顶部一定是返回地址（正在执行函数栈帧除外）​
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112158278.png)​
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112159233.png)​
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112201722.png)​
+
+> 调用其他函数前，如果有必要，可将某些寄存器(如:eax、edx、ecx)的值入栈放置于上图灰色区域保存，防止中间结果被破坏
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112205519.png)​
+
 ## CISC 和 RISC 的基本概念
+
+* CISC：Complex Instruction Set Computer
+
+  设计思路：一条指令完成一个复杂的基本功能，如x86架构
+* RISC：Reduced Instruction Set Computer
+
+  一条指令完成一个基本“动作”，多条指令组合完成一个复杂的基本功能，如ARM架构
+
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202409112221681.png)​
 
 ‍
