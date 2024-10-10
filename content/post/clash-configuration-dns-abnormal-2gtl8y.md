@@ -3,7 +3,7 @@ title: clash配置之DNS异常
 slug: clash-configuration-dns-abnormal-2gtl8y
 url: /post/clash-configuration-dns-abnormal-2gtl8y.html
 date: '2024-10-08 15:29:40+08:00'
-lastmod: '2024-10-08 15:29:42+08:00'
+lastmod: '2024-10-10 22:23:52+08:00'
 toc: true
 tags:
   - openwrt
@@ -46,4 +46,19 @@ isCJKLanguage: true
 
 ~~或者直接让网卡不获取ipv6地址~~
 
-‍
+自编写DNS配置参考
+
+```yaml
+dns:
+  enable: true
+  #允许解析ipv6
+  ipv6: true
+  #默认域名解析服务器
+  nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+  #direct出口域名解析的 DNS 服务器
+  direct-nameserver: [223.5.5.5, 119.29.29.29]
+  #后备域名解析服务器，使用境外 DNS
+  fallback: ['https://dns.cloudflare.com/dns-query','tls://8.8.4.4:853']
+  #筛选，满足条件的将使用 fallback结果或只使用 fallback解析
+  fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+```
