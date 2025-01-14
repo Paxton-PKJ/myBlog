@@ -7,6 +7,12 @@ date: '2025-01-14 15:56:37+08:00'
 lastmod: '2025-01-14 20:06:22+08:00'
 toc: true
 isCJKLanguage: true
+tags:
+  - rime
+catagories:
+  - 杂七杂八疑难杂症
+image: >-
+  https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/wechat_2025-01-14_200553_104.png
 ---
 
 
