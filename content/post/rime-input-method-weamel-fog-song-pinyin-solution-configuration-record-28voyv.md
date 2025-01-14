@@ -28,7 +28,7 @@ weasel 是 rime 输入法的 Windows 平台实现，即 rime-Windows
 
 首次安装需要选择至少一个内置方案，暂时选择 **「全拼」** ，配色选择随意，后续修改
 
-​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image-20250114164724-3rixg7z.png)​
+​![image](assets/image-20250114164724-3rixg7z.png)​
 
 ## 安装雾凇拼音方案
 
@@ -38,7 +38,7 @@ weasel 是 rime 输入法的 Windows 平台实现，即 rime-Windows
 
 ​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202501141659137.png)​
 
-点击**重新部署**即切换到雾凇拼音方案，<span data-type="text" style="color: var(--b3-font-color13);" id="">对任何配置文件的修改都需要点击重新部署生效</span>
+点击**重新部署**即切换到雾凇拼音方案，<span data-type="text" id="" style="color: var(--b3-font-color13);">对任何配置文件的修改都需要点击重新部署生效</span>
 
 ## 皮肤自定义
 
@@ -102,11 +102,11 @@ patch:
 
 ​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202501141758428.png "自用绿效果参考")​
 
-​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image-20250114181211-d9n70ey.png "皮肤配色对应配置项")​
+​![image](assets/image-20250114181211-d9n70ey.png "皮肤配色对应配置项")​
 
 ## 导入搜狗个人词库
 
-​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image-20250114185630-gceqqv0.png)​
+​![image](assets/image-20250114185630-gceqqv0.png)​
 
 按图片操作将搜狗词库导出
 
@@ -158,9 +158,9 @@ import_tables:
 
   ​`v1`​ 得到数字 1 的 emoji 和各种符号表示形式
 
-  ​`va`​得到字母a的各种声调字符
+  ​`va` ​得到字母 a 的各种声调字符
 * **Unicode**：大写 `U`​ 开头，如 `U62fc`​ 得到「拼」。
 * **数字、金额大写**：大写 `R`​ 开头，如 `R1234`​ 得到「一千二百三十四、壹仟贰佰叁拾肆元整」。
 * **农历日期**：大写 `N`​ 开头，如 `N20240210`​ 得到「二〇二四年正月初一」
 * **以词定字**：默认快捷键为左右中括号 `[`​ `]`​，分别<u>取第一个和最后一个字</u>
-* **简易计算器：**​<kbd>cC</kbd>​+算式
+* **简易计算器：**  <kbd>cC</kbd>​+ 算式
