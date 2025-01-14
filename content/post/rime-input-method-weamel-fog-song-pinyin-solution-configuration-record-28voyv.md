@@ -28,7 +28,7 @@ weasel 是 rime 输入法的 Windows 平台实现，即 rime-Windows
 
 首次安装需要选择至少一个内置方案，暂时选择 **「全拼」** ，配色选择随意，后续修改
 
-​![image](assets/image-20250114164724-3rixg7z.png)​
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image-20250114164724-3rixg7z.png)​
 
 ## 安装雾凇拼音方案
 
@@ -102,11 +102,11 @@ patch:
 
 ​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202501141758428.png "自用绿效果参考")​
 
-​![image](assets/image-20250114181211-d9n70ey.png "皮肤配色对应配置项")​
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/202501142014667.png "皮肤配色对应配置项")​
 
 ## 导入搜狗个人词库
 
-​![image](assets/image-20250114185630-gceqqv0.png)​
+​![image](https://image-host-pkj.oss-cn-guangzhou.aliyuncs.com/image-20250114185630-gceqqv0.png)​
 
 按图片操作将搜狗词库导出
 
