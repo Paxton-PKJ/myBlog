@@ -5,6 +5,6 @@
     "build": "hugo --minify"
   },
   "devDependencies": {
-    "hugo-bin": "^0.136.0"
+    "hugo-extended": "^0.139.4"
   }
 }
