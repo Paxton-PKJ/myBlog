@@ -1,0 +1,10 @@
+{
+  "name": "my-hugo-on-workers",
+  "private": true,
+  "scripts": {
+    "build": "hugo --minify"
+  },
+  "devDependencies": {
+    "hugo-bin": "^0.136.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "my-hugo-on-workers",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-08-31",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
