@@ -1,6 +1,6 @@
 baseurl: /
 languageCode: zh-CN
-theme: hugo-theme-stack-3.21.0
+theme: hugo-theme-stack-master
 paginate: 10
 title: PaxtonのBlog
 
